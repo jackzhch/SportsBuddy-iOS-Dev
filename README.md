@@ -12,6 +12,16 @@ https://www.youtube.com/watch?v=WV8fba2RyK8&index=5&list=PLH2OTB2Psi40baB0Xst6un
 Android Version Tutorial:
 https://www.youtube.com/watch?v=CHCUEViNYMU&list=PLH2OTB2Psi40baB0Xst6unc0lxJWmrMq7&index=6
 
+Test Account:
+username: wentings
+pwd: 910707
+
+username: demo
+pwd: 8575
+
+username: zhchjack
+pwd:123456
+
 ----------------------------------------------------
 Join / Originate an Event
 Users can join an event originated by others. Users can also start a new event and wait for other users to join. Events have basic properties such as sports type, time, location, maximum number of participants allowed, current participants that have enrolled in, visibility and event notes. Event visibility includes public and team view only.
