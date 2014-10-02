@@ -2,6 +2,7 @@ SportsBuddy-iOS-Dev
 ===================
 
 Social sports theme app
+
 • Goal: Facilitated users to find nearby events, identify proper counterparts, initiate sports-related discussion.
 • Main Features: Sponsor / Join Events, Create / Manage Teams, Post / Reply Discussion Threads.
 • Support: Utilized Parse as backend support; Apple Maps, Twitter API, Google Calendar API to provide related services.
@@ -38,12 +39,14 @@ Users will be identified with these features, user name, user avatar, user inter
 
 ----------------------------------------------------
 Target User
+
 1) Students and faculties at CMU/UPitt (maybe Pittsburgh residences) who want to play sports but have difficulty in finding partners. 
 2) Users who want to find some new friends by attending sporting events since it is believed sports can act as the gateway for new friendship.
 3) Users who are interested in learning/sharing some specific sports technique can have quick access to these information through the discussion board section. 
 4) Users who want to find people sharing the same interests.
 
 User Benefits
+
 1) Super-easy access to nearby sporting activities
 2) More efficient management of team activities 
 3) Make new friends along the way
