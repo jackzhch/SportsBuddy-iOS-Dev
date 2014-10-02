@@ -8,28 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-/*!
- A bitmask specifying the sign up elements which are enabled in the view.
- @see PFSignUpViewController
- @see PFSignUpView
- */
-typedef NS_OPTIONS(NSInteger, PFSignUpFields) {
-    /*! Username and password fields. */
+typedef enum {
     PFSignUpFieldsUsernameAndPassword = 0,
-    /*! Email field. */
     PFSignUpFieldsEmail = 1 << 0,
-    /*! This field can be used for something else. */
-    PFSignUpFieldsAdditional = 1 << 1,
-    /*! Sign Up Button */
+    PFSignUpFieldsAdditional = 1 << 1, // this field can be used for something else
     PFSignUpFieldsSignUpButton = 1 << 2,
-    /*! Dismiss Button */
     PFSignUpFieldsDismissButton = 1 << 3,
-    /*! Default value. Combines Username, Password, Email, Sign Up and Dismiss Buttons. */
-    PFSignUpFieldsDefault = (PFSignUpFieldsUsernameAndPassword |
-                             PFSignUpFieldsEmail |
-                             PFSignUpFieldsSignUpButton |
-                             PFSignUpFieldsDismissButton)
-};
+    PFSignUpFieldsDefault = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsEmail | PFSignUpFieldsSignUpButton | PFSignUpFieldsDismissButton
+} PFSignUpFields;
 
 /*!
  The class provides a standard sign up interface for authenticating a PFUser.
@@ -37,18 +23,14 @@ typedef NS_OPTIONS(NSInteger, PFSignUpFields) {
 @interface PFSignUpView : UIScrollView
 
 /*! @name Creating Sign Up View */
-
 /*!
  Initializes the view with the specified sign up elements.
  @param fields A bitmask specifying the sign up elements which are enabled in the view
- @see PFSignUpFields
  */
-- (instancetype)initWithFields:(PFSignUpFields)fields;
+- (instancetype)initWithFields:(PFSignUpFields) fields;
 
-/*!
- The view controller that will present this view.
- Used to lay out elements correctly when the presenting view controller has translucent elements.
- */
+/// The view controller that will present this view.
+/// Used to lay out elements correctly when the presenting view controller has translucent elements.
 @property (nonatomic, strong) UIViewController *presentingViewController;
 
 /*! @name Customizing the Logo */
@@ -84,5 +66,6 @@ typedef NS_OPTIONS(NSInteger, PFSignUpFields) {
 
 /// The dismiss button. It is nil if the element is not enabled.
 @property (nonatomic, strong, readonly) UIButton *dismissButton;
-
 @end
+
+

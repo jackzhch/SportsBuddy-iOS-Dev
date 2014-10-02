@@ -8,36 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-/*!
- A bitmask specifying the log in elements which are enabled in the view.
- @sa PFLogInViewController
- @sa PFLogInView
- */
-typedef NS_OPTIONS(NSInteger, PFLogInFields) {
-    /*! No fields. */
+typedef enum {
     PFLogInFieldsNone = 0,
-    /*! Username and password fields. */
     PFLogInFieldsUsernameAndPassword = 1 << 0,
-    /*! Forgot password button. */
     PFLogInFieldsPasswordForgotten = 1 << 1,
-    /*! Login button. */
     PFLogInFieldsLogInButton = 1 << 2,
-    /*! Button to login with Facebook. */
     PFLogInFieldsFacebook = 1 << 3,
-    /*! Button to login with Twitter. */
     PFLogInFieldsTwitter = 1 << 4,
-    /*! Signup Button. */
     PFLogInFieldsSignUpButton = 1 << 5,
-    /*! Dismiss Button. */
     PFLogInFieldsDismissButton = 1 << 6,
-
-    /*! Default value. Combines Username, Password, Login, Signup, Forgot Password and Dismiss buttons. */
-    PFLogInFieldsDefault = (PFLogInFieldsUsernameAndPassword |
-                            PFLogInFieldsLogInButton |
-                            PFLogInFieldsSignUpButton |
-                            PFLogInFieldsPasswordForgotten |
-                            PFLogInFieldsDismissButton)
-};
+    
+    PFLogInFieldsDefault = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsPasswordForgotten | PFLogInFieldsDismissButton
+} PFLogInFields;
 
 /*!
  The class provides a standard log in interface for authenticating a PFUser.
@@ -49,12 +31,10 @@ typedef NS_OPTIONS(NSInteger, PFLogInFields) {
  Initializes the view with the specified log in elements.
  @param fields A bitmask specifying the log in elements which are enabled in the view
  */
-- (instancetype)initWithFields:(PFLogInFields)fields;
+- (instancetype)initWithFields:(PFLogInFields) fields;
 
-/*!
- The view controller that will present this view.
- Used to lay out elements correctly when the presenting view controller has translucent elements.
- */
+/// The view controller that will present this view.
+/// Used to lay out elements correctly when the presenting view controller has translucent elements.
 @property (nonatomic, strong) UIViewController *presentingViewController;
 
 /*! @name Customizing the Logo */
@@ -103,3 +83,5 @@ typedef NS_OPTIONS(NSInteger, PFLogInFields) {
 @property (nonatomic, strong, readonly) UILabel *signUpLabel;
 
 @end
+
+

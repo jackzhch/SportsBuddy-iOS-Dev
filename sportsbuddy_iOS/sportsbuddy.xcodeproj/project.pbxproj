@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5260E7D019C9CE9B000A3D1C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5260E7CF19C9CE9B000A3D1C /* Parse.framework */; };
 		FA459AD7198549F500063A20 /* ReplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA459AD6198549F500063A20 /* ReplyTableViewCell.m */; };
 		FA459ADA19855B5D00063A20 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA459AD919855B5D00063A20 /* NewPostViewController.m */; };
 		FA459ADD198574B500063A20 /* TeamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA459ADC198574B500063A20 /* TeamTableViewCell.m */; };
 		FA459AE01985826800063A20 /* TeamDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA459ADF1985826800063A20 /* TeamDetailViewController.m */; };
+		FA459AE51985C8CE00063A20 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA459AE41985C8CE00063A20 /* Parse.framework */; };
 		FA459AE71985C90600063A20 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA459AE61985C90600063A20 /* AudioToolbox.framework */; };
 		FA459AE91985C91100063A20 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA459AE81985C91100063A20 /* CFNetwork.framework */; };
 		FA459AEB1985C92200063A20 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA459AEA1985C92200063A20 /* CoreLocation.framework */; };
@@ -67,7 +67,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5260E7CF19C9CE9B000A3D1C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FA459AD5198549F500063A20 /* ReplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyTableViewCell.h; sourceTree = "<group>"; };
 		FA459AD6198549F500063A20 /* ReplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyTableViewCell.m; sourceTree = "<group>"; };
 		FA459AD819855B5D00063A20 /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		FA459ADC198574B500063A20 /* TeamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamTableViewCell.m; sourceTree = "<group>"; };
 		FA459ADE1985826800063A20 /* TeamDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamDetailViewController.h; sourceTree = "<group>"; };
 		FA459ADF1985826800063A20 /* TeamDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamDetailViewController.m; sourceTree = "<group>"; };
+		FA459AE41985C8CE00063A20 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FA459AE61985C90600063A20 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FA459AE81985C91100063A20 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		FA459AEA1985C92200063A20 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -148,7 +148,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5260E7D019C9CE9B000A3D1C /* Parse.framework in Frameworks */,
 				FA459B46198E90AA00063A20 /* Social.framework in Frameworks */,
 				FA459AF71985C95C00063A20 /* SystemConfiguration.framework in Frameworks */,
 				FA459AF51985C95200063A20 /* StoreKit.framework in Frameworks */,
@@ -161,6 +160,7 @@
 				FA459AE91985C91100063A20 /* CFNetwork.framework in Frameworks */,
 				FA459AE71985C90600063A20 /* AudioToolbox.framework in Frameworks */,
 				FAB382031981701500D405E0 /* UIKit.framework in Frameworks */,
+				FA459AE51985C8CE00063A20 /* Parse.framework in Frameworks */,
 				FAB381FF1981701500D405E0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +278,6 @@
 		FAB381FD1981701500D405E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5260E7CF19C9CE9B000A3D1C /* Parse.framework */,
 				FA459B45198E90AA00063A20 /* Social.framework */,
 				FA459AF61985C95C00063A20 /* SystemConfiguration.framework */,
 				FA459AF41985C95200063A20 /* StoreKit.framework */,
@@ -289,6 +288,7 @@
 				FA459AEA1985C92200063A20 /* CoreLocation.framework */,
 				FA459AE81985C91100063A20 /* CFNetwork.framework */,
 				FA459AE61985C90600063A20 /* AudioToolbox.framework */,
+				FA459AE41985C8CE00063A20 /* Parse.framework */,
 				FAB381FE1981701500D405E0 /* Foundation.framework */,
 				FAB382001981701500D405E0 /* CoreGraphics.framework */,
 				FAB382021981701500D405E0 /* UIKit.framework */,

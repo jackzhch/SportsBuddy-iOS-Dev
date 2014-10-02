@@ -35,9 +35,8 @@
 - (void)authorizeWithSuccess:(void (^)(void))success failure:(void (^)(NSError *error))failure cancel:(void (^)(void))cancel;
 
 /*!
- Adds a 3-legged OAuth signature to an NSMutableURLRequest based upon the properties set for the Twitter object.
- Use this function to sign requests being made to the Twitter API.
- @param request Request to sign.
+ Adds a 3-legged OAuth signature to an NSMutableURLRequest based upon the properties set for the Twitter object.  Use this
+ function to sign requests being made to the Twitter API.
  */
 - (void)signRequest:(NSMutableURLRequest *)request;
 

@@ -3,15 +3,15 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PFConstants.h"
 #import "PFGeoPoint.h"
 #import "PFObject.h"
 #import "PFUser.h"
+#import "PFConstants.h"
 
 /*!
- A class that defines a query that is used to query for PFObjects.
+  A class that defines a query that is used to query for PFObjects.
  */
-@interface PFQuery : NSObject <NSCopying>
+@interface PFQuery : NSObject
 
 #pragma mark Query options
 
@@ -26,25 +26,21 @@
 
 /*!
  Creates a PFQuery with the constraints given by predicate.
-
+ 
  The following types of predicates are supported:
-
- - Simple comparisons such as `=`, `!=`, `<`, `>`, `<=`, `>=`, and `BETWEEN` with a key and a constant.
- - Containment predicates, such as "x IN {1, 2, 3}".
- - Key-existence predicates, such as "x IN SELF".
- - BEGINSWITH expressions.
- - Compound predicates with `AND`, `OR`, and `NOT`.
- - SubQueries with "key IN %@", subquery.
-
+ * Simple comparisons such as =, !=, <, >, <=, >=, and BETWEEN with a key and a constant.
+ * Containment predicates, such as "x IN {1, 2, 3}".
+ * Key-existence predicates, such as "x IN SELF".
+ * BEGINSWITH expressions.
+ * Compound predicates with AND, OR, and NOT.
+ * SubQueries with "key IN %@", subquery.
+ 
  The following types of predicates are NOT supported:
-
- - Aggregate operations, such as `ANY`, `SOME`, `ALL`, or `NONE`.
- - Regular expressions, such as `LIKE`, `MATCHES`, `CONTAINS`, or `ENDSWITH`.
- - Predicates comparing one key to another.
- - Complex predicates with many ORed clauses.
-
- @param className The class to query on.
- @param predicate The predicate to create conditions from.
+ * Aggregate operations, such as ANY, SOME, ALL, or NONE.
+ * Regular expressions, such as LIKE, MATCHES, CONTAINS, or ENDSWITH.
+ * Predicates comparing one key to another.
+ * Complex predicates with many ORed clauses.
+ 
  */
 + (PFQuery *)queryWithClassName:(NSString *)className predicate:(NSPredicate *)predicate;
 
@@ -55,7 +51,7 @@
 - (instancetype)initWithClassName:(NSString *)newClassName;
 
 /*!
- The class name to query for
+  The class name to query for
  */
 @property (nonatomic, strong) NSString *parseClassName;
 
@@ -89,50 +85,49 @@
 - (void)whereKeyDoesNotExist:(NSString *)key;
 
 /*!
- Add a constraint to the query that requires a particular key's object to be equal to the provided object.
+  Add a constraint to the query that requires a particular key's object to be equal to the provided object.
  @param key The key to be constrained.
  @param object The object that must be equalled.
  */
 - (void)whereKey:(NSString *)key equalTo:(id)object;
 
 /*!
- Add a constraint to the query that requires a particular key's object to be less than the provided object.
+  Add a constraint to the query that requires a particular key's object to be less than the provided object.
  @param key The key to be constrained.
  @param object The object that provides an upper bound.
  */
 - (void)whereKey:(NSString *)key lessThan:(id)object;
 
 /*!
- Add a constraint to the query that requires a particular key's object to be less than or equal to the provided object.
+  Add a constraint to the query that requires a particular key's object to be less than or equal to the provided object.
  @param key The key to be constrained.
  @param object The object that must be equalled.
  */
 - (void)whereKey:(NSString *)key lessThanOrEqualTo:(id)object;
 
 /*!
- Add a constraint to the query that requires a particular key's object to be greater than the provided object.
+  Add a constraint to the query that requires a particular key's object to be greater than the provided object.
  @param key The key to be constrained.
  @param object The object that must be equalled.
  */
 - (void)whereKey:(NSString *)key greaterThan:(id)object;
 
 /*!
- Add a constraint to the query that requires a particular key's
- object to be greater than or equal to the provided object.
+  Add a constraint to the query that requires a particular key's object to be greater than or equal to the provided object.
  @param key The key to be constrained.
  @param object The object that must be equalled.
  */
 - (void)whereKey:(NSString *)key greaterThanOrEqualTo:(id)object;
 
 /*!
- Add a constraint to the query that requires a particular key's object to be not equal to the provided object.
+  Add a constraint to the query that requires a particular key's object to be not equal to the provided object.
  @param key The key to be constrained.
  @param object The object that must not be equalled.
  */
 - (void)whereKey:(NSString *)key notEqualTo:(id)object;
 
 /*!
- Add a constraint to the query that requires a particular key's object to be contained in the provided array.
+  Add a constraint to the query that requires a particular key's object to be contained in the provided array.
  @param key The key to be constrained.
  @param array The possible values for the key's object.
  */
@@ -215,14 +210,9 @@
 /*!
  Add a regular expression constraint for finding string values that match the provided regular expression.
  This may be slow for large datasets.
-
  @param key The key that the string to match is stored in.
  @param regex The regular expression pattern to match.
- @param modifiers Any of the following supported PCRE modifiers:
-
- - `i` - Case insensitive search
- - `m` - Search across multiple lines of input
-
+ @param modifiers Any of the following supported PCRE modifiers:<br><code>i</code> - Case insensitive search<br><code>m</code> - Search across multiple lines of input
  */
 - (void)whereKey:(NSString *)key matchesRegex:(NSString *)regex modifiers:(NSString *)modifiers;
 
@@ -351,8 +341,6 @@
 
 /*!
  Returns a PFObject with a given class and id and sets an error if necessary.
- @param objectClass The class name for the object that is being requested.
- @param objectId The id of the object that is being requested.
  @param error Pointer to an NSError that will be set if necessary.
  @result The PFObject if found. Returns nil if the object isn't found, or if there was an error.
  */
@@ -362,9 +350,9 @@
 
 /*!
  Returns a PFObject with the given id.
-
- This mutates the PFQuery. It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
-
+ 
+ This mutates the PFQuery.
+ 
  @param objectId The id of the object that is being requested.
  @result The PFObject if found. Returns nil if the object isn't found, or if there was an error.
  */
@@ -372,21 +360,19 @@
 
 /*!
  Returns a PFObject with the given id and sets an error if necessary.
-
- This mutates the PFQuery. It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
-
- @param objectId The id of the object that is being requested.
+ 
+ This mutates the PFQuery
+ 
  @param error Pointer to an NSError that will be set if necessary.
  @result The PFObject if found. Returns nil if the object isn't found, or if there was an error.
  */
 - (PFObject *)getObjectWithId:(NSString *)objectId error:(NSError **)error;
 
 /*!
- Gets a PFObject asynchronously and calls the given block with the result.
-
- This mutates the PFQuery. It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
-
- @param objectId The id of the object that is being requested.
+ Gets a PFObject asynchronously and calls the given block with the result. 
+ 
+ This mutates the PFQuery
+ 
  @param block The block to execute. The block should have the following argument signature: (NSArray *object, NSError *error)
  */
 - (void)getObjectInBackgroundWithId:(NSString *)objectId
@@ -394,9 +380,9 @@
 
 /*!
  Gets a PFObject asynchronously.
-
- This mutates the PFQuery. It will reset limit to `1`, skip to `0` and remove all conditions, leaving only `objectId`.
-
+ 
+ This mutates the PFQuery
+ 
  @param objectId The id of the object being requested.
  @param target The target for the callback selector.
  @param selector The selector for the callback. It should have the following signature: (void)callbackWithResult:(PFObject *)result error:(NSError *)error. result will be nil if error is set and vice versa.
@@ -419,7 +405,6 @@
 
 /*!
  Returns a PFUser with a given class and id and sets an error if necessary.
- @param objectId The id of the object that is being requested.
  @param error Pointer to an NSError that will be set if necessary.
  @result The PFUser if found. Returns nil if the object isn't found, or if there was an error.
  */
@@ -427,7 +412,7 @@
                           error:(NSError **)error;
 
 /*!
- @deprecated Please use [PFUser query] instead.
+ Deprecated. Please use [PFUser query] instead.
  */
 + (PFQuery *)queryForUser PARSE_DEPRECATED("Use [PFUser query] instead.");
 
@@ -451,7 +436,7 @@
 
 /*!
  Finds objects asynchronously and calls the given block with the results.
- @param block The block to execute. The block should have the following argument signature:(NSArray *objects, NSError *error)
+ @param block The block to execute. The block should have the following argument signature:(NSArray *objects, NSError *error) 
  */
 - (void)findObjectsInBackgroundWithBlock:(PFArrayResultBlock)block;
 
@@ -466,9 +451,9 @@
 
 /*!
  Gets an object based on the constructed query.
-
- This method mutates the PFQuery instance. It will reset the limit to `1`.
-
+ 
+ This mutates the PFQuery.
+ 
  @result Returns a PFObject, or nil if none was found.
  */
 - (PFObject *)getFirstObject;
@@ -476,8 +461,8 @@
 /*!
  Gets an object based on the constructed query and sets an error if any occurred.
 
- This method mutates the PFQuery instance. It will reset the limit to `1`.
-
+ This mutates the PFQuery.
+ 
  @param error Pointer to an NSError that will be set if necessary.
  @result Returns a PFObject, or nil if none was found.
  */
@@ -485,18 +470,18 @@
 
 /*!
  Gets an object asynchronously and calls the given block with the result.
-
- This method mutates the PFQuery instance. It will reset the limit to `1`.
-
+ 
+ This mutates the PFQuery.
+ 
  @param block The block to execute. The block should have the following argument signature:(PFObject *object, NSError *error) result will be nil if error is set OR no object was found matching the query. error will be nil if result is set OR if the query succeeded, but found no results.
  */
 - (void)getFirstObjectInBackgroundWithBlock:(PFObjectResultBlock)block;
 
 /*!
  Gets an object asynchronously and calls the given callback with the results.
-
- This method mutates the PFQuery instance. It will reset the limit to `1`.
-
+ 
+ This mutates the PFQuery.
+ 
  @param target The object to call the selector on.
  @param selector The selector to call. It should have the following signature: (void)callbackWithResult:(PFObject *)result error:(NSError *)error. result will be nil if error is set OR no object was found matching the query. error will be nil if result is set OR if the query succeeded, but found no results.
  */
@@ -508,13 +493,13 @@
 /** @name Counting the Matches in a Query */
 
 /*!
- Counts objects based on the constructed query.
+  Counts objects based on the constructed query.
  @result Returns the number of PFObjects that match the query, or -1 if there is an error.
  */
 - (NSInteger)countObjects;
 
 /*!
- Counts objects based on the constructed query and sets an error if there was one.
+  Counts objects based on the constructed query and sets an error if there was one.
  @param error Pointer to an NSError that will be set if necessary.
  @result Returns the number of PFObjects that match the query, or -1 if there is an error.
  */
@@ -523,12 +508,12 @@
 /*!
  Counts objects asynchronously and calls the given block with the counts.
  @param block The block to execute. The block should have the following argument signature:
- (int count, NSError *error)
+ (int count, NSError *error) 
  */
 - (void)countObjectsInBackgroundWithBlock:(PFIntegerResultBlock)block;
 
 /*!
- Counts objects asynchronously and calls the given callback with the count.
+  Counts objects asynchronously and calls the given callback with the count.
  @param target The object to call the selector on.
  @param selector The selector to call. It should have the following signature: (void)callbackWithResult:(NSNumber *)result error:(NSError *)error. */
 - (void)countObjectsInBackgroundWithTarget:(id)target selector:(SEL)selector;
@@ -589,10 +574,9 @@
 /*!
  Clears the cached results for all queries.
  */
-+ (void)clearAllCachedResults;
++ (void)clearAllCachedResults; 
 
-#pragma mark -
-#pragma mark Advanced Settings
+#pragma mark - Advanced Settings
 
 /** @name Advanced Settings */
 

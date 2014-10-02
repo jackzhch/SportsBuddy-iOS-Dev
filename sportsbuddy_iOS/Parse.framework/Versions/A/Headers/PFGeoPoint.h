@@ -18,7 +18,7 @@
  Currently, object classes may only have one key associated with a GeoPoint type.
  */
 
-@interface PFGeoPoint : NSObject <NSCopying, NSCoding>
+@interface PFGeoPoint : NSObject<NSCopying>
 
 /** @name Creating a PFGeoPoint */
 /*!
@@ -80,5 +80,6 @@
  @result distance in kilometers
  */
 - (double)distanceInKilometersTo:(PFGeoPoint*)point;
+
 
 @end

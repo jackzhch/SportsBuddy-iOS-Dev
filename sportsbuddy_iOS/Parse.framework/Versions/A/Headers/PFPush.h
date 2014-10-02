@@ -6,9 +6,8 @@
 //  Copyright 2011 Parse, Inc. All rights reserved.
 //
 
-#import <AudioToolbox/AudioToolbox.h>
 #import <Foundation/Foundation.h>
-
+#import <AudioToolbox/AudioToolbox.h>
 #import "PFConstants.h"
 #import "PFQuery.h"
 
@@ -24,7 +23,7 @@
  applications via Cloud Code or the REST API to push-enabled devices (e.g. iOS
  or Android).
  */
-@interface PFPush : NSObject <NSCopying>
+@interface PFPush : NSObject
 
 /*! @name Creating a Push Notification */
 + (PFPush *)push;
@@ -70,18 +69,14 @@
 - (void)setData:(NSDictionary *)data;
 
 /*!
- Sets whether this push will go to Android devices.
- @param pushToAndroid Whether this push will go to Android devices.
- @deprecated Please use a [PFInstallation query] with a constraint on deviceType instead.
+ Deprecated. Please use a PFInstallation.query with a constraint on deviceType.
  */
-- (void)setPushToAndroid:(BOOL)pushToAndroid PARSE_DEPRECATED("Please use a [PFInstallation query] with a constraint on deviceType.");
+- (void)setPushToAndroid:(BOOL)pushToAndroid PARSE_DEPRECATED("Please use a PFInstallation.query with a constraint on deviceType.");
 
 /*!
- Sets whether this push will go to iOS devices.
- @param pushToIOS Whether this push will go to iOS devices.
- @deprecated Please use a [PFInstallation query] with a constraint on deviceType instead.
+ Deprecated. Please use a PFInstallation.query with a constraint on deviceType.
  */
-- (void)setPushToIOS:(BOOL)pushToIOS PARSE_DEPRECATED("Please use a [PFInstallation query] with a constraint on deviceType.");
+- (void)setPushToIOS:(BOOL)pushToIOS PARSE_DEPRECATED("Please use a PFInstallation.query with a constraint on deviceType.");
 
 /*!
  Sets the expiration time for this notification. The notification will be
@@ -89,7 +84,7 @@
  is sent, or which come online before the expiration time is reached.
  Because device clocks are not guaranteed to be accurate, most applications
  should instead use expireAfterTimeInterval.
- @param date The time at which the notification should expire.
+ @param time The time at which the notification should expire.
  */
 - (void)expireAtDate:(NSDate *)date;
 
@@ -100,7 +95,7 @@
  time interval of the notification being received by Parse's server.
  An interval which is less than or equal to zero indicates that the
  message should only be sent to devices which are currently online.
- @param timeInterval The interval after which the notification should expire.
+ @param interval The interval after which the notification should expire.
  */
 - (void)expireAfterTimeInterval:(NSTimeInterval)timeInterval;
 
@@ -138,7 +133,7 @@
  @param channel The channel to send to. The channel name must start with
  a letter and contain only letters, numbers, dashes, and underscores.
  @param message The message to send.
- @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
+ @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error) 
  */
 + (void)sendPushMessageToChannelInBackground:(NSString *)channel
                                  withMessage:(NSString *)message
@@ -203,7 +198,7 @@
 
 /*!
  Asynchronously send this push message and executes the given callback block.
- @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
+ @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error) 
  */
 - (void)sendPushInBackgroundWithBlock:(PFBooleanResultBlock)block;
 
@@ -240,7 +235,7 @@
  @param channel The channel to send to. The channel name must start with
  a letter and contain only letters, numbers, dashes, and underscores.
  @param data The data to send.
- @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
+ @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error) 
  */
 + (void)sendPushDataToChannelInBackground:(NSString *)channel
                                  withData:(NSDictionary *)data
@@ -316,7 +311,7 @@
 
 /*!
  Get all the channels that this device is subscribed to.
- @param block The block to execute. The block should have the following argument signature: (NSSet *channels, NSError *error)
+ @param block The block to execute. The block should have the following argument signature: (NSSet *channels, NSError *error) 
  */
 + (void)getSubscribedChannelsInBackgroundWithBlock:(PFSetResultBlock)block;
 
@@ -349,7 +344,7 @@
  Asynchronously subscribes the device to a channel of push notifications and calls the given block.
  @param channel The channel to subscribe to. The channel name must start with
  a letter and contain only letters, numbers, dashes, and underscores.
- @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
+ @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error) 
  */
 + (void)subscribeToChannelInBackground:(NSString *)channel
                                  block:(PFBooleanResultBlock)block;
@@ -379,10 +374,11 @@
  */
 + (void)unsubscribeFromChannelInBackground:(NSString *)channel;
 
+
 /*!
  Asynchronously unsubscribes the device from a channel of push notifications and calls the given block.
  @param channel The channel to unsubscribe from.
- @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
+ @param block The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error) 
  */
 + (void)unsubscribeFromChannelInBackground:(NSString *)channel
                                      block:(PFBooleanResultBlock)block;

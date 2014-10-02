@@ -210,7 +210,9 @@
         [targetTeam saveInBackground];
         
         // remove teamID from current user's teamsJoined list
-        [user[@"teamsJoined"] removeObject:self.teamID];
+        NSMutableArray *teamsJoined = user[@"teamsJoined"];
+        [teamsJoined removeObject:self.teamID];
+        user[@"teamsJoined"] = teamsJoined;
         [user saveInBackground];
         
         // pop to root view
